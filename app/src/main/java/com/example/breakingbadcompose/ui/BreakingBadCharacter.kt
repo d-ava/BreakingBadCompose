@@ -23,11 +23,11 @@ import com.example.breakingbadcompose.R
 
 @OptIn(ExperimentalCoilApi::class)
 @Composable
-fun BreakingBadCharacterCard(title: String) {
+fun BreakingBadCharacterCard(title: String, img:String) {
     val painter =
-        rememberImagePainter(data = "https://images.amcnetworks.com/amc.com/wp-content/uploads/2015/04/cast_bb_700x1000_walter-white-lg.jpg",
+        rememberImagePainter(data = img,
             builder = {
-//                placeholder(R.drawable.ic_brba_splash)
+                placeholder(R.drawable.ic_brba_splash)
                 crossfade(1000)
                 error(R.drawable.ic_baseline_error_outline_24)
 
@@ -57,7 +57,7 @@ fun BreakingBadCharacterCard(title: String) {
             )
 
 
-            Text(text = title, style = MaterialTheme.typography.h6,color = Color.White,
+            Text(text = title,color = Color.White,
 
                 modifier = Modifier
                     .padding(4.dp)

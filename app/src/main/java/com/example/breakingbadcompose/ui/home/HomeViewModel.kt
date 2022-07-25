@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.breakingbadcompose.api.BBCharactersApi
 import com.example.breakingbadcompose.model.BBCharacter
-import com.example.breakingbadcompose.repository.CharactersRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

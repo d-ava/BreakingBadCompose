@@ -23,11 +23,18 @@ import com.example.breakingbadcompose.R
 
 @OptIn(ExperimentalCoilApi::class)
 @Composable
-fun BreakingBadCharacterCard(title: String, img:String) {
+fun BreakingBadCharacterCard(title: String, img:String, category:String) {
     val painter =
         rememberImagePainter(data = img,
             builder = {
-                placeholder(R.drawable.ic_brba_splash)
+                if (category.lowercase().contains("s") && category.lowercase().contains("d") ){
+                    placeholder(R.drawable.ic_main_logo)
+                }else if (category.lowercase().contains("s")){
+                    placeholder(R.drawable.ic_better_cal_saul_logo)
+                }else{
+                    placeholder(R.drawable.ic_brba_splash)
+                }
+
                 crossfade(1000)
                 error(R.drawable.ic_baseline_error_outline_24)
 

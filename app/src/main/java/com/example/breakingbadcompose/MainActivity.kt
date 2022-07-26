@@ -9,6 +9,7 @@ import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.breakingbadcompose.ui.MainScreen
+import com.example.breakingbadcompose.ui.character.CharacterScreen
 import com.example.breakingbadcompose.ui.home.HomeScreen
 import com.example.breakingbadcompose.ui.home.HomeViewModel
 import com.example.breakingbadcompose.ui.theme.BreakingBadComposeTheme
@@ -24,8 +25,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             val vm: HomeViewModel = viewModel()
             BreakingBadComposeTheme {
-//                HomeScreen(vm)
-                MainScreen(vm)
+CharacterScreen()
+//                MainScreen(vm)
             }
         }
     }

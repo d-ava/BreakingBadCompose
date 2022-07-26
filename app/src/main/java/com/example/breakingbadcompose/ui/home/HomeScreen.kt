@@ -37,6 +37,7 @@ charactersViewModel:HomeViewModel
         modifier = Modifier
             .background(color = bb_background)
             .fillMaxSize(), contentAlignment = Alignment.Center
+
     ) {
 
         Column() {

@@ -2,6 +2,7 @@ package com.example.breakingbadcompose.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -23,7 +24,7 @@ import com.example.breakingbadcompose.R
 
 @OptIn(ExperimentalCoilApi::class)
 @Composable
-fun BreakingBadCharacterCard(title: String, img:String, category:String) {
+fun BreakingBadCharacterCard(title: String, img:String, category:String, onClick:()->Unit) {
     val painter =
         rememberImagePainter(data = img,
             builder = {
@@ -45,7 +46,8 @@ fun BreakingBadCharacterCard(title: String, img:String, category:String) {
         shape = RoundedCornerShape(topEnd = 8.dp, topStart = 8.dp),
         modifier = Modifier
             .padding(8.dp)
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .clickable { onClick() },
         elevation = 8.dp, backgroundColor = Color.DarkGray
     ) {
         if (painterState is ImagePainter.State.Loading) {

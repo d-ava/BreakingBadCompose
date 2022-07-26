@@ -25,8 +25,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             val vm: HomeViewModel = viewModel()
             BreakingBadComposeTheme {
-CharacterScreen()
-//                MainScreen(vm)
+
+                MainScreen(vm)
             }
         }
     }

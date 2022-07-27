@@ -14,9 +14,10 @@ import androidx.navigation.compose.rememberNavController
 import com.example.breakingbadcompose.ui.home.HomeViewModel
 
 @Composable
-fun MainScreen(vm: HomeViewModel) {
-    val navController = rememberNavController()
-    Scaffold(bottomBar = {
+fun MainScreen(vm: HomeViewModel, navController:NavHostController = rememberNavController()) {
+//    val navController = rememberNavController()
+    Scaffold(
+        bottomBar = {
         BottomBar(navController = navController)
     }) {
         BottomNavGraph(navController = navController, vm)
@@ -35,16 +36,21 @@ fun BottomBar(navController: NavHostController) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
 
-    BottomNavigation() {
-        screens.forEach { screen ->
-            AddItem(
-                screen = screen,
-                currentDestination = currentDestination,
-                navController = navController
-            )
-        }
+    val bottomBarDestination = screens.any{it.route == currentDestination?.route}
+    if(bottomBarDestination){
+        BottomNavigation() {
+            screens.forEach { screen ->
+                AddItem(
+                    screen = screen,
+                    currentDestination = currentDestination,
+                    navController = navController
+                )
+            }
 
+        }
     }
+
+
 
 }
 

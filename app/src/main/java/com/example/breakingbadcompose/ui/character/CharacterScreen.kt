@@ -33,8 +33,7 @@ fun CharacterScreen(navController: NavHostController) {
             .fillMaxSize()
     ) {
 
-        val img =
-            result!!.img
+        val img =result?.img ?: R.drawable.ic_baseline_error_outline_24
         val painter = rememberImagePainter(data = img,
             builder = {
                 placeholder(R.drawable.ic_brba_splash)
@@ -64,7 +63,7 @@ fun CharacterScreen(navController: NavHostController) {
                     .fillMaxHeight(0.6f)
             )
             Text(
-                text = result.name,
+                text = result?.name ?: "null",
                 color = bb_white,
                 modifier = Modifier.align(alignment = Alignment.CenterHorizontally),
                 fontSize = MaterialTheme.typography.h4.fontSize,

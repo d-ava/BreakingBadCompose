@@ -16,23 +16,26 @@ import com.example.breakingbadcompose.ui.search.SearchScreen
 import com.example.breakingbadcompose.util.Graph
 
 @Composable
-fun BottomNavGraph(navController: NavHostController, vm: HomeViewModel){
-    NavHost(navController = navController,
-    startDestination = BottomBarScreen.Home.route){
+fun BottomNavGraph(navController: NavHostController, vm: HomeViewModel) {
+    NavHost(
+        navController = navController,
+        startDestination = BottomBarScreen.Home.route,
+        route = Graph.HOME
+    ) {
 
-        composable(route=BottomBarScreen.Home.route){
+        composable(route = BottomBarScreen.Home.route) {
 
             HomeScreen(vm, navController = navController)
         }
 
-        composable(route=BottomBarScreen.Saved.route){
+        composable(route = BottomBarScreen.Saved.route) {
             SavedScreen {}
         }
 
-        composable(route=BottomBarScreen.Search.route){
+        composable(route = BottomBarScreen.Search.route) {
             SearchScreen()
         }
-        composable(route=BottomBarScreen.Profile.route){
+        composable(route = BottomBarScreen.Profile.route) {
             ProfileScreen {
             }
         }
@@ -41,20 +44,18 @@ fun BottomNavGraph(navController: NavHostController, vm: HomeViewModel){
     }
 }
 
-fun NavGraphBuilder.detailsNavGraph(navController: NavHostController){
+fun NavGraphBuilder.detailsNavGraph(navController: NavHostController) {
     navigation(
         route = Graph.DETAILS,
         startDestination = DetailsScreen.Character.route
-    ){
-        composable(route = DetailsScreen.Character.route){
+    ) {
+        composable(route = DetailsScreen.Character.route) {
             CharacterScreen(navController)
         }
     }
 }
 
 
-
-
-sealed class DetailsScreen(val route:String){
-    object Character:DetailsScreen(route = "character")
+sealed class DetailsScreen(val route: String) {
+    object Character : DetailsScreen(route = "character")
 }

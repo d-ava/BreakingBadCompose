@@ -1,6 +1,8 @@
 package com.example.breakingbadcompose.ui.theme
 
 import androidx.compose.material.Typography
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.fontResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -33,9 +35,12 @@ val Typography = Typography(
     */
 )
 
-//val fonts = FontFamily(
-//    Font(R.font.gotham_bold),
-//    Font(R.font.gotham_book),
-//    Font(R.font.gotham_medium),
-//
-//    )
+
+
+
+val bbFonts = FontFamily(
+    Font(R.font.gotham_bold, FontWeight.Bold),
+    Font(R.font.gotham_book,FontWeight.Normal),
+    Font(R.font.gotham_medium, FontWeight.Medium),
+
+    )

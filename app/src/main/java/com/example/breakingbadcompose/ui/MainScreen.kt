@@ -4,7 +4,10 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -12,14 +15,18 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.breakingbadcompose.ui.home.HomeViewModel
+import com.example.breakingbadcompose.ui.theme.*
 
 @Composable
-fun MainScreen(vm: HomeViewModel, navController:NavHostController = rememberNavController()) {
+fun MainScreen(vm: HomeViewModel, navController: NavHostController = rememberNavController()) {
 //    val navController = rememberNavController()
     Scaffold(
         bottomBar = {
-        BottomBar(navController = navController)
-    }) {
+            BottomBar(navController = navController)
+        },
+        backgroundColor = bb_background,
+
+    ) {
         BottomNavGraph(navController = navController, vm)
     }
 }
@@ -28,17 +35,17 @@ fun MainScreen(vm: HomeViewModel, navController:NavHostController = rememberNavC
 fun BottomBar(navController: NavHostController) {
     val screens = listOf(
         BottomBarScreen.Home,
-        BottomBarScreen.Saved,
         BottomBarScreen.Search,
+        BottomBarScreen.Saved,
         BottomBarScreen.Profile
     )
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
 
-    val bottomBarDestination = screens.any{it.route == currentDestination?.route}
-    if(bottomBarDestination){
-        BottomNavigation() {
+    val bottomBarDestination = screens.any { it.route == currentDestination?.route }
+    if (bottomBarDestination) {
+        BottomNavigation(backgroundColor = bb_control_color) {
             screens.forEach { screen ->
                 AddItem(
                     screen = screen,
@@ -49,7 +56,6 @@ fun BottomBar(navController: NavHostController) {
 
         }
     }
-
 
 
 }
@@ -65,9 +71,8 @@ fun RowScope.AddItem(
             Text(text = screen.title)
         },
 
+
         icon = {
-
-
             Icon(
                 painter = painterResource(id = screen.icon),
                 contentDescription = "Nav Icon"
@@ -82,7 +87,11 @@ fun RowScope.AddItem(
                 launchSingleTop = true
             }
         },
-        unselectedContentColor = LocalContentColor.current.copy(alpha = ContentAlpha.disabled),
-        alwaysShowLabel = false
-    )
+//        unselectedContentColor = LocalContentColor.current.copy(alpha = ContentAlpha.disabled),
+        alwaysShowLabel = false,
+        selectedContentColor = bb_active_color,
+        unselectedContentColor = bb_grey_light
+
+
+        )
 }

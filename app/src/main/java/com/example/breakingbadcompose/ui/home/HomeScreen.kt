@@ -23,6 +23,7 @@ import androidx.navigation.NavHostController
 import com.example.breakingbadcompose.R
 import com.example.breakingbadcompose.model.BBCharacter
 import com.example.breakingbadcompose.ui.BreakingBadCharacterCard
+import com.example.breakingbadcompose.ui.theme.bbFonts
 import com.example.breakingbadcompose.ui.theme.bb_active_color
 import com.example.breakingbadcompose.ui.theme.bb_background
 import com.example.breakingbadcompose.ui.theme.bb_white
@@ -40,7 +41,7 @@ fun HomeScreen(
     Box(
         modifier = Modifier
             .background(color = bb_background)
-            .fillMaxSize(), contentAlignment = Alignment.Center
+            .fillMaxSize(), //contentAlignment = Alignment.Center
 
     ) {
 
@@ -52,6 +53,8 @@ fun HomeScreen(
 //                fontFamily = ,
                 text = "Characters",
                 color = bb_white,
+                fontFamily = bbFonts
+                ,
                 modifier = Modifier.align(alignment = Alignment.CenterHorizontally)
 
             )

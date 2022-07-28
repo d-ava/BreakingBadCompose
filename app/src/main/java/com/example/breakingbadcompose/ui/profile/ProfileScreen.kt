@@ -35,7 +35,7 @@ fun ProfileScreen(onClick: () -> Unit) {
             val painter = rememberImagePainter(data = img)
             Image(
                 modifier = Modifier
-                    .padding(top = 128.dp)
+                    .padding(top = 64.dp)
                     .size(200.dp)
                     .clip(CircleShape)
                     .border(width = 4.dp, color = bb_active_color, shape = CircleShape)
@@ -60,7 +60,7 @@ fun ProfileScreen(onClick: () -> Unit) {
                 modifier = Modifier.align(alignment = Alignment.CenterHorizontally)
             )
 
-            LogoWithText(logo = R.drawable.ic_baseline_language_24, txt = "Language")
+            LogoWithText(logo = R.drawable.ic_baseline_language_24, txt = "Language",1)
 //           Divider(color = bb_control_color, thickness = 2.dp)
             LogoWithText(logo = R.drawable.ic_baseline_login_24, txt = "Login")
 
@@ -71,11 +71,10 @@ fun ProfileScreen(onClick: () -> Unit) {
 }
 
 @Composable
-fun LogoWithText(logo: Int, txt: String) {
+fun LogoWithText(logo: Int, txt: String, num:Int=0) {
     Box(
         modifier = Modifier
-//            .fillMaxWidth()
-            .padding(top = 32.dp), contentAlignment = Alignment.CenterStart
+            .padding(top = if (num==1)128.dp else 8.dp), contentAlignment = Alignment.CenterStart
 
     ) {
 

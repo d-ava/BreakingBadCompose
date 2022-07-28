@@ -21,13 +21,15 @@ import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import com.example.breakingbadcompose.R
 import com.example.breakingbadcompose.model.BBCharacter
+import com.example.breakingbadcompose.ui.home.HomeViewModel
 import com.example.breakingbadcompose.ui.theme.*
 
 @OptIn(ExperimentalCoilApi::class)
 @Composable
-fun CharacterScreen(navController: NavHostController) {
+fun CharacterScreen(navController: NavHostController, vm:HomeViewModel) {
     val result =
-        navController.previousBackStackEntry?.savedStateHandle?.get<BBCharacter>("bb_character")
+        vm.character
+//        navController.previousBackStackEntry?.savedStateHandle?.get<BBCharacter>("bb_character")
     val scrollState = rememberScrollState()
     Box(
         modifier = Modifier
@@ -124,24 +126,15 @@ fun CharacterScreen(navController: NavHostController) {
 
 }
 
-@Composable
-@Preview(showBackground = true)
-fun CharacterScreenPreview() {
-    CharacterScreen(rememberNavController())
-}
+//@Composable
+//@Preview(showBackground = true)
+//fun CharacterScreenPreview() {
+//    CharacterScreen(rememberNavController())
+//}
 
 
 @Composable
 fun DisplayCharacterDetails(title:String, result:String?, ){
-//    Row(
-//        modifier = Modifier
-//            .padding(start = 32.dp, end = 16.dp, top = 16.dp)
-//            .fillMaxWidth(),
-//
-//        ) {
-//        Text(text = title, color = bb_white)
-//        Text(text = result ?: "", color = bb_white, modifier = Modifier.padding(start = 64.dp))
-//    }
 
     Box(modifier = Modifier.fillMaxWidth().padding(top = 8.dp)) {
         Text(text = title, color = bb_white, modifier = Modifier.padding(start = 32.dp))

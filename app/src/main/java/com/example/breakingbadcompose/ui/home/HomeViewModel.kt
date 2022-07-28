@@ -1,7 +1,9 @@
 package com.example.breakingbadcompose.ui.home
 
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.breakingbadcompose.api.BBCharactersApi
@@ -31,5 +33,17 @@ private fun test(){
         }
     }
 }
+
+
+
+    var character by mutableStateOf<BBCharacter?>(null)
+    private set
+
+    fun addCharacter(newCharacter:BBCharacter){
+        character = newCharacter
+    }
+
+
+
 
 }

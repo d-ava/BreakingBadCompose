@@ -39,18 +39,18 @@ fun BottomNavGraph(navController: NavHostController, vm: HomeViewModel) {
             ProfileScreen {
             }
         }
-        detailsNavGraph(navController = navController)
+        detailsNavGraph(navController = navController, vm)
 
     }
 }
 
-fun NavGraphBuilder.detailsNavGraph(navController: NavHostController) {
+fun NavGraphBuilder.detailsNavGraph(navController: NavHostController, vm: HomeViewModel) {
     navigation(
         route = Graph.DETAILS,
         startDestination = DetailsScreen.Character.route
     ) {
         composable(route = DetailsScreen.Character.route) {
-            CharacterScreen(navController)
+            CharacterScreen(navController,vm)
         }
     }
 }

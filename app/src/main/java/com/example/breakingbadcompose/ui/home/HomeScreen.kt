@@ -67,12 +67,13 @@ fun HomeScreen(
                         img = character.img,
                         category = character.category,
                         onClick = {
-//                        Log.d("---", "${character.name} was clicked")
-                            navController.currentBackStackEntry?.savedStateHandle?.set(
-                                "bb_character",
-                                character
-                            )
+
+//                            navController.currentBackStackEntry?.savedStateHandle?.set(
+//                                "bb_character",
+//                                character
+//                            )
                             navController.navigate(Graph.DETAILS)
+                            charactersViewModel.addCharacter(character)
                         })
                 }
             })

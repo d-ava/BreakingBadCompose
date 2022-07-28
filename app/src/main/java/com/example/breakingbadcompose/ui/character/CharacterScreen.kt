@@ -133,14 +133,21 @@ fun CharacterScreenPreview() {
 
 @Composable
 fun DisplayCharacterDetails(title:String, result:String?, ){
-    Row(
-        modifier = Modifier
-            .padding(start = 32.dp, end = 16.dp, top = 16.dp)
-            .fillMaxWidth(),
+//    Row(
+//        modifier = Modifier
+//            .padding(start = 32.dp, end = 16.dp, top = 16.dp)
+//            .fillMaxWidth(),
+//
+//        ) {
+//        Text(text = title, color = bb_white)
+//        Text(text = result ?: "", color = bb_white, modifier = Modifier.padding(start = 64.dp))
+//    }
 
-        ) {
-        Text(text = title, color = bb_white)
-        Text(text = result ?: "", color = bb_white, modifier = Modifier.padding(start = 64.dp))
+    Box(modifier = Modifier.fillMaxWidth().padding(top = 8.dp)) {
+        Text(text = title, color = bb_white, modifier = Modifier.padding(start = 32.dp))
+        Text(text = result ?:"", color = bb_white,
+            modifier = Modifier.padding(end = 32.dp).align(alignment = Alignment.CenterEnd))
+
     }
 
 

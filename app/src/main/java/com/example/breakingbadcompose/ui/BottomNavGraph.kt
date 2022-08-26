@@ -10,6 +10,7 @@ import androidx.navigation.navigation
 import com.example.breakingbadcompose.ui.character.CharacterScreen
 import com.example.breakingbadcompose.ui.home.HomeScreen
 import com.example.breakingbadcompose.ui.home.HomeViewModel
+import com.example.breakingbadcompose.ui.login.LogInScreen
 import com.example.breakingbadcompose.ui.profile.ProfileScreen
 import com.example.breakingbadcompose.ui.saved.SavedScreen
 import com.example.breakingbadcompose.ui.search.SearchScreen
@@ -37,9 +38,11 @@ fun BottomNavGraph(navController: NavHostController, vm: HomeViewModel) {
         }
         composable(route = BottomBarScreen.Profile.route) {
             ProfileScreen {
+                navController.navigate(Graph.LOGIN)
             }
         }
         detailsNavGraph(navController = navController, vm)
+        profileNavGraph(navController = navController)
 
     }
 }
@@ -52,10 +55,27 @@ fun NavGraphBuilder.detailsNavGraph(navController: NavHostController, vm: HomeVi
         composable(route = DetailsScreen.Character.route) {
             CharacterScreen(navController,vm)
         }
+
+    }
+}
+
+fun NavGraphBuilder.profileNavGraph(navController: NavHostController){
+    navigation(
+        route = Graph.LOGIN,
+        startDestination = Profile.Login.route
+    ){
+        composable(route = Profile.Login.route){
+            LogInScreen()
+        }
     }
 }
 
 
 sealed class DetailsScreen(val route: String) {
     object Character : DetailsScreen(route = "character")
+
+}
+
+sealed class Profile(val route:String){
+    object Login: Profile(route = "login")
 }

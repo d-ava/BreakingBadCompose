@@ -3,6 +3,7 @@ package com.example.breakingbadcompose.ui.profile
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Divider
@@ -60,9 +61,9 @@ fun ProfileScreen(onClick: () -> Unit) {
                 modifier = Modifier.align(alignment = Alignment.CenterHorizontally)
             )
 
-            LogoWithText(logo = R.drawable.ic_baseline_language_24, txt = "Language",1)
+            LogoWithText(logo = R.drawable.ic_baseline_language_24, txt = "Language",1, onClick = onClick )
 //           Divider(color = bb_control_color, thickness = 2.dp)
-            LogoWithText(logo = R.drawable.ic_baseline_login_24, txt = "Login")
+            LogoWithText(logo = R.drawable.ic_baseline_login_24, txt = "Login", onClick=onClick )
 
         }
 
@@ -71,10 +72,10 @@ fun ProfileScreen(onClick: () -> Unit) {
 }
 
 @Composable
-fun LogoWithText(logo: Int, txt: String, num:Int=0) {
+fun LogoWithText(logo: Int, txt: String, num:Int=0, onClick: () -> Unit) {
     Box(
         modifier = Modifier
-            .padding(top = if (num==1)128.dp else 8.dp), contentAlignment = Alignment.CenterStart
+            .padding(top = if (num==1)128.dp else 8.dp), contentAlignment = Alignment.CenterStart,
 
     ) {
 
@@ -87,8 +88,9 @@ fun LogoWithText(logo: Int, txt: String, num:Int=0) {
         )
         Text(
             text = txt,
-            modifier = Modifier.padding(start = 80.dp),
-            color = bb_white
+            modifier = Modifier.padding(start = 80.dp).clickable { onClick() },
+            color = bb_white,
+
         )
 
     }

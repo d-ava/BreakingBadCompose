@@ -12,6 +12,7 @@ import com.example.breakingbadcompose.ui.home.HomeScreen
 import com.example.breakingbadcompose.ui.home.HomeViewModel
 import com.example.breakingbadcompose.ui.login.LogInScreen
 import com.example.breakingbadcompose.ui.profile.ProfileScreen
+import com.example.breakingbadcompose.ui.register.RegisterScreen
 import com.example.breakingbadcompose.ui.saved.SavedScreen
 import com.example.breakingbadcompose.ui.search.SearchScreen
 import com.example.breakingbadcompose.util.Graph
@@ -65,7 +66,13 @@ fun NavGraphBuilder.profileNavGraph(navController: NavHostController){
         startDestination = Profile.Login.route
     ){
         composable(route = Profile.Login.route){
-            LogInScreen()
+            LogInScreen{
+                navController.navigate(Profile.Register.route)
+            }
+        }
+
+        composable(route = Profile.Register.route){
+            RegisterScreen()
         }
     }
 }
@@ -78,4 +85,5 @@ sealed class DetailsScreen(val route: String) {
 
 sealed class Profile(val route:String){
     object Login: Profile(route = "login")
+    object Register: Profile(route= "Register")
 }

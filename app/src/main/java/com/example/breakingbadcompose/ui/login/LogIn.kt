@@ -1,5 +1,6 @@
 package com.example.breakingbadcompose.ui.login
 
+import android.util.Log.d
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -15,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.input.key.Key.Companion.D
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
@@ -29,9 +31,8 @@ import java.nio.file.Files.size
 @Composable
 fun LogInScreen(onClick: () -> Unit) {
 
-    var textState1 = remember {
-        mutableStateOf("")
-    }
+    val usernameTextState = remember { mutableStateOf("") }
+    val passwordTextState = remember { mutableStateOf("") }
 
     Box(
         modifier = androidx.compose.ui.Modifier
@@ -58,7 +59,13 @@ fun LogInScreen(onClick: () -> Unit) {
 
             )
 
-            BBTextField(text = textState1)
+            BBTextField(text = usernameTextState, title = "USERNAME")
+
+            BBTextField(text = passwordTextState, title = "PASSWORD")
+
+            BBButton(text = "LogIn") {
+                d("---", "pressed")
+            }
         }
 
 
@@ -66,7 +73,6 @@ fun LogInScreen(onClick: () -> Unit) {
 
 
 }
-
 
 
 //@Composable

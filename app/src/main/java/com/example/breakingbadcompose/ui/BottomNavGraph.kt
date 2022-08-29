@@ -72,7 +72,7 @@ fun NavGraphBuilder.profileNavGraph(navController: NavHostController){
         }
 
         composable(route = Profile.Register.route){
-            RegisterScreen()
+            RegisterScreen(navController)
         }
     }
 }

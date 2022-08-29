@@ -12,6 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
 import com.example.breakingbadcompose.R
 import com.example.breakingbadcompose.ui.login.BBButton
 import com.example.breakingbadcompose.ui.login.BBTextField
@@ -22,7 +23,7 @@ import java.lang.reflect.Modifier
 import java.nio.file.Files.size
 
 @Composable
-fun RegisterScreen() {
+fun RegisterScreen(navController:NavHostController) {
 
     val emailTextState = remember { mutableStateOf("") }
     val nameTextState = remember { mutableStateOf("") }
@@ -39,6 +40,7 @@ fun RegisterScreen() {
 
         Column() {
             BackArrow {
+                navController.popBackStack()
 
             }
 

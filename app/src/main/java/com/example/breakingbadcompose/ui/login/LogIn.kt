@@ -29,6 +29,10 @@ import java.nio.file.Files.size
 @Composable
 fun LogInScreen(onClick: () -> Unit) {
 
+    var textState1 = remember {
+        mutableStateOf("")
+    }
+
     Box(
         modifier = androidx.compose.ui.Modifier
             .background(color = bb_grey_light)
@@ -54,7 +58,7 @@ fun LogInScreen(onClick: () -> Unit) {
 
             )
 
-            TxtField()
+            BBTextField(text = textState1)
         }
 
 
@@ -63,44 +67,7 @@ fun LogInScreen(onClick: () -> Unit) {
 
 }
 
-@Composable
-fun TxtField() {
-    var text by remember { mutableStateOf("") }
 
-    OutlinedTextField(
-
-
-        value = text,
-        onValueChange = { newText ->
-            text = newText
-
-        },
-
-//        modifier = androidx.compose.ui.Modifier
-//            .border(
-//                width = 4.dp,
-//                brush = Brush.horizontalGradient(listOf(bb_active_color, bb_active_color)),
-//                shape = RoundedCornerShape(32.dp)
-//            )
-//            .height(64.dp)
-//        ,
-
-
-//        label = {
-//            Text(text = "email")
-//        },
-//        singleLine = true,
-//        leadingIcon = {
-//            IconButton(onClick = { /*TODO*/ }) {
-//                Icon(imageVector = Icons.Filled.Email, contentDescription = "email")
-//            }
-//        },
-
-
-    )
-
-
-}
 
 //@Composable
 //@Preview(showBackground = true)

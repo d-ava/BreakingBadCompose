@@ -13,7 +13,11 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.example.breakingbadcompose.ui.theme.bbFonts
 import com.example.breakingbadcompose.ui.theme.bb_control_color
 import com.example.breakingbadcompose.ui.theme.bb_white
 
@@ -28,7 +32,8 @@ fun BBTextField(text: MutableState<String>, title:String) {
         Text(
             text =title,
             modifier = Modifier.padding(start = (40).dp, bottom = 8.dp),
-            color = bb_white
+            color = bb_white,
+            fontFamily = bbFonts, fontWeight = FontWeight.Bold, fontSize = 14.sp
         )
         TextField(
             value = text.value,
@@ -45,7 +50,7 @@ fun BBTextField(text: MutableState<String>, title:String) {
 //                    brush = Brush.horizontalGradient(listOf(bb_active_color, bb_active_color)),
 //                    shape = CircleShape
 //                )
-                .height(64.dp),
+                .height(48.dp),
             colors = TextFieldDefaults.textFieldColors(
                 textColor = bb_white,
                 backgroundColor = bb_control_color,
@@ -54,10 +59,16 @@ fun BBTextField(text: MutableState<String>, title:String) {
                 focusedIndicatorColor = Color.Transparent,
                 cursorColor = bb_white,
 
+
 //            unfocusedLabelColor = Color.Blue
 
 
             ),
+            textStyle = TextStyle.Default.copy(
+                fontFamily = bbFonts,
+                fontWeight = FontWeight.Medium,
+                fontSize = 16.sp
+            )
 //        keyboardActions = KeyboardActions(onDone = {
 //        }),
 //        keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done)

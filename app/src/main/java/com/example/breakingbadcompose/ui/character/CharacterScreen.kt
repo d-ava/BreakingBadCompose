@@ -49,8 +49,9 @@ fun CharacterScreen(navController: NavHostController, vm:HomeViewModel) {
 
         Column {
             Text(
-                "Back",
+                stringResource(id = R.string.back),
                 color = bb_white,
+                fontFamily = bbFonts,
                 modifier = Modifier
                     .align(alignment = Alignment.Start)
                     .padding(start = 16.dp, top = 16.dp)
@@ -136,10 +137,14 @@ fun CharacterScreen(navController: NavHostController, vm:HomeViewModel) {
 @Composable
 fun DisplayCharacterDetails(title:String, result:String?, ){
 
-    Box(modifier = Modifier.fillMaxWidth().padding(top = 8.dp)) {
+    Box(modifier = Modifier
+        .fillMaxWidth()
+        .padding(top = 8.dp)) {
         Text(text = title, color = bb_white, modifier = Modifier.padding(start = 32.dp))
         Text(text = result ?:"", color = bb_white,
-            modifier = Modifier.padding(end = 32.dp).align(alignment = Alignment.CenterEnd))
+            modifier = Modifier
+                .padding(end = 32.dp)
+                .align(alignment = Alignment.CenterEnd))
 
     }
 

@@ -16,7 +16,7 @@ val Typography = Typography(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp
-    )
+    ),
 
 
 
@@ -36,11 +36,9 @@ val Typography = Typography(
 )
 
 
-
-
 val bbFonts = FontFamily(
-    Font(R.font.gotham_bold, FontWeight.Bold),
-    Font(R.font.gotham_book,FontWeight.Normal),
-    Font(R.font.gotham_medium, FontWeight.Medium),
+    Font(R.font.gotham_bold, weight = FontWeight.Bold),
+    Font(R.font.gotham_book, weight = FontWeight.Normal),
+    Font(R.font.gotham_medium, weight = FontWeight.Medium),
 
     )

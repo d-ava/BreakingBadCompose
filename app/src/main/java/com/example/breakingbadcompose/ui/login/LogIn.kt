@@ -37,7 +37,7 @@ fun LogInScreen(onClick: () -> Unit) {
         Column {
 
             Image(
-                modifier = androidx.compose.ui.Modifier.padding(start = 64.dp, end = 64.dp),
+                modifier = androidx.compose.ui.Modifier.padding(start = 64.dp, end = 64.dp, top = 32.dp),
                 painter = painter,
                 contentDescription = "bb logo",
                 alignment = Alignment.Center,

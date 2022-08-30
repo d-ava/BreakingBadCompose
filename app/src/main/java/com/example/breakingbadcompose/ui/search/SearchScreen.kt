@@ -31,7 +31,7 @@ fun SearchScreen(){
             color = bb_active_color
         )
 
-        BBProgressIndicator()
+
 
 
 

@@ -12,13 +12,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
 import com.example.breakingbadcompose.R
 import com.example.breakingbadcompose.ui.theme.*
+import com.example.breakingbadcompose.ui.uiComponents.BackArrow
 import java.lang.reflect.Modifier
 
 @Composable
-fun LogInScreen(onClick: () -> Unit) {
+fun LogInScreen(onClick: () -> Unit, navController: NavController) {
 
     val usernameTextState = remember { mutableStateOf("") }
     val passwordTextState = remember { mutableStateOf("") }
@@ -35,9 +37,16 @@ fun LogInScreen(onClick: () -> Unit) {
         val painter = rememberImagePainter(data = image)
 
         Column {
+            BackArrow {
+                navController.popBackStack()
+            }
 
             Image(
-                modifier = androidx.compose.ui.Modifier.padding(start = 64.dp, end = 64.dp, top = 32.dp),
+                modifier = androidx.compose.ui.Modifier.padding(
+                    start = 64.dp,
+                    end = 64.dp,
+                    top = 32.dp
+                ),
                 painter = painter,
                 contentDescription = "bb logo",
                 alignment = Alignment.Center,

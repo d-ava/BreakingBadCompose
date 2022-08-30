@@ -9,41 +9,46 @@ import androidx.lifecycle.viewModelScope
 import com.example.breakingbadcompose.api.BBCharactersApi
 import com.example.breakingbadcompose.model.BBCharacter
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel@Inject constructor(
+class HomeViewModel @Inject constructor(
     private val api: BBCharactersApi,
 //    private val repository: CharactersRepository
-):ViewModel() {
+) : ViewModel() {
+
+    val charactersLoading = mutableStateOf(false)
 
     val characters: MutableState<List<BBCharacter>> = mutableStateOf(listOf())
 
     init {
-test()
+        getBBCharacters()
     }
 
-private fun test(){
-    viewModelScope.launch {
-        val response = api.getBBCharacters()
-        val body = response.body()
-        if (response.isSuccessful && body != null){
-            characters.value = body
+    private fun getBBCharacters() {
+        viewModelScope.launch {
+            charactersLoading.value = true
+
+            val response = api.getBBCharacters()
+            val body = response.body()
+            if (response.isSuccessful && body != null) {
+                characters.value = body
+            }
+
+
+            charactersLoading.value = false
         }
     }
-}
-
 
 
     var character by mutableStateOf<BBCharacter?>(null)
-    private set
+        private set
 
-    fun addCharacter(newCharacter:BBCharacter){
+    fun addCharacter(newCharacter: BBCharacter) {
         character = newCharacter
     }
-
-
 
 
 }

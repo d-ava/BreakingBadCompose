@@ -27,6 +27,7 @@ import com.example.breakingbadcompose.ui.theme.bbFonts
 import com.example.breakingbadcompose.ui.theme.bb_active_color
 import com.example.breakingbadcompose.ui.theme.bb_background
 import com.example.breakingbadcompose.ui.theme.bb_white
+import com.example.breakingbadcompose.ui.uiComponents.BBProgressIndicator
 import com.example.breakingbadcompose.util.Graph
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -45,12 +46,14 @@ fun HomeScreen(
 
     ) {
 
+        val loading = charactersViewModel.charactersLoading.value
         Column() {
+
             Text(
 
                 fontSize = MaterialTheme.typography.h4.fontSize,
                 fontWeight = FontWeight.Bold,
-//                fontFamily = ,
+
                 text = "Characters",
                 color = bb_white,
                 fontFamily = bbFonts
@@ -59,24 +62,32 @@ fun HomeScreen(
 
             )
 
-            LazyVerticalGrid(cells = GridCells.Fixed(2), content = {
-                items(charactersViewModel.characters.value) { character ->
+            Box(modifier = Modifier.fillMaxSize()) {
 
-                    BreakingBadCharacterCard(
-                        title = character.name,
-                        img = character.img,
-                        category = character.category,
-                        onClick = {
+
+                LazyVerticalGrid(cells = GridCells.Fixed(2), content = {
+                    items(charactersViewModel.characters.value) { character ->
+
+                        BreakingBadCharacterCard(
+                            title = character.name,
+                            img = character.img,
+                            category = character.category,
+                            onClick = {
 
 //                            navController.currentBackStackEntry?.savedStateHandle?.set(
 //                                "bb_character",
 //                                character
 //                            )
-                            navController.navigate(Graph.DETAILS)
-                            charactersViewModel.addCharacter(character)
-                        })
-                }
-            })
+                                navController.navigate(Graph.DETAILS)
+                                charactersViewModel.addCharacter(character)
+                            })
+                    }
+                })
+
+                BBProgressIndicator(show = loading)
+
+            }
+
         }
 
 

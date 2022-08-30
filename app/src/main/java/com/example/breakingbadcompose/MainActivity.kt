@@ -29,8 +29,8 @@ class MainActivity : ComponentActivity() {
             val vm: HomeViewModel = viewModel()
             BreakingBadComposeTheme {
 
-//                MainScreen(vm)
-                SearchScreen()
+                MainScreen(vm)
+//                SearchScreen()
 //                LogInScreen {}
 //                RegisterScreen()
             }

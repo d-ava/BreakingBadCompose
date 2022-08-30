@@ -66,9 +66,9 @@ fun NavGraphBuilder.profileNavGraph(navController: NavHostController){
         startDestination = Profile.Login.route
     ){
         composable(route = Profile.Login.route){
-            LogInScreen{
+            LogInScreen(navController = navController, onClick = {
                 navController.navigate(Profile.Register.route)
-            }
+            })
         }
 
         composable(route = Profile.Register.route){

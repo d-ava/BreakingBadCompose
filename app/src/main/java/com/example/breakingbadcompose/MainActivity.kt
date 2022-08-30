@@ -14,6 +14,7 @@ import com.example.breakingbadcompose.ui.home.HomeScreen
 import com.example.breakingbadcompose.ui.home.HomeViewModel
 import com.example.breakingbadcompose.ui.login.LogInScreen
 import com.example.breakingbadcompose.ui.register.RegisterScreen
+import com.example.breakingbadcompose.ui.search.SearchScreen
 import com.example.breakingbadcompose.ui.theme.BreakingBadComposeTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -28,7 +29,8 @@ class MainActivity : ComponentActivity() {
             val vm: HomeViewModel = viewModel()
             BreakingBadComposeTheme {
 
-                MainScreen(vm)
+//                MainScreen(vm)
+                SearchScreen()
 //                LogInScreen {}
 //                RegisterScreen()
             }

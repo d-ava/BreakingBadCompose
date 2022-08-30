@@ -11,6 +11,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.breakingbadcompose.ui.theme.bb_active_color
 import com.example.breakingbadcompose.ui.theme.bb_background
+import com.example.breakingbadcompose.ui.uiComponents.BBProgressIndicator
 import java.lang.reflect.Modifier
 import java.nio.file.Files.size
 
@@ -30,6 +31,10 @@ fun SearchScreen(){
             color = bb_active_color
         )
 
+        BBProgressIndicator()
+
+
+
     }
 
 
@@ -41,3 +46,4 @@ fun SearchScreen(){
 fun SearchScreenPreview(){
     SearchScreen()
 }
+

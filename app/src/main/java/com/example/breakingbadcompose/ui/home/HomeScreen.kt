@@ -1,7 +1,6 @@
 package com.example.breakingbadcompose.ui.home
 
-import android.util.Log
-import android.widget.Toast
+import android.util.Log.d
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -15,16 +14,10 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontWeight
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import com.example.breakingbadcompose.R
-import com.example.breakingbadcompose.model.BBCharacter
 import com.example.breakingbadcompose.ui.BreakingBadCharacterCard
 import com.example.breakingbadcompose.ui.theme.bbFonts
-import com.example.breakingbadcompose.ui.theme.bb_active_color
 import com.example.breakingbadcompose.ui.theme.bb_background
 import com.example.breakingbadcompose.ui.theme.bb_white
 import com.example.breakingbadcompose.ui.uiComponents.BBProgressIndicator
@@ -34,10 +27,16 @@ import com.example.breakingbadcompose.util.Graph
 @Composable
 fun HomeScreen(
 
-    charactersViewModel: HomeViewModel,
+    vm: HomeViewModel,
     navController: NavHostController
 
 ) {
+
+//    val test = vm.quotes.value
+//    d("---", "quotes - $test")
+
+
+
 
     Box(
         modifier = Modifier
@@ -46,7 +45,7 @@ fun HomeScreen(
 
     ) {
 
-        val loading = charactersViewModel.charactersLoading.value
+        val loading = vm.charactersLoading.value
         Column() {
 
             Text(
@@ -66,7 +65,7 @@ fun HomeScreen(
 
 
                 LazyVerticalGrid(cells = GridCells.Fixed(2), content = {
-                    items(charactersViewModel.characters.value) { character ->
+                    items(vm.characters.value) { character ->
 
                         BreakingBadCharacterCard(
                             title = character.name,
@@ -79,7 +78,7 @@ fun HomeScreen(
 //                                character
 //                            )
                                 navController.navigate(Graph.DETAILS)
-                                charactersViewModel.addCharacter(character)
+                                vm.addCharacter(character)
                             })
                     }
                 })

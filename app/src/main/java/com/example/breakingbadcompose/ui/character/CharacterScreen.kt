@@ -1,6 +1,7 @@
 package com.example.breakingbadcompose.ui.character
 
 import android.text.Layout
+import android.util.Log.d
 import androidx.compose.animation.AnimatedContentScope.SlideDirection.Companion.Start
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -15,6 +16,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import coil.annotation.ExperimentalCoilApi
@@ -26,7 +28,13 @@ import com.example.breakingbadcompose.ui.theme.*
 
 @OptIn(ExperimentalCoilApi::class)
 @Composable
-fun CharacterScreen(navController: NavHostController, vm:HomeViewModel) {
+fun CharacterScreen(navController: NavHostController, vm: HomeViewModel) {
+
+//    val charactersViewModel:CharactersViewModel = viewModel()
+
+    var test = vm.quotes.value
+    d("---", "quotes loading - $test")
+
     val result =
         vm.character
 //        navController.previousBackStackEntry?.savedStateHandle?.get<BBCharacter>("bb_character")
@@ -135,16 +143,20 @@ fun CharacterScreen(navController: NavHostController, vm:HomeViewModel) {
 
 
 @Composable
-fun DisplayCharacterDetails(title:String, result:String?, ){
+fun DisplayCharacterDetails(title: String, result: String?) {
 
-    Box(modifier = Modifier
-        .fillMaxWidth()
-        .padding(top = 8.dp)) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 8.dp)
+    ) {
         Text(text = title, color = bb_white, modifier = Modifier.padding(start = 32.dp))
-        Text(text = result ?:"", color = bb_white,
+        Text(
+            text = result ?: "", color = bb_white,
             modifier = Modifier
                 .padding(end = 32.dp)
-                .align(alignment = Alignment.CenterEnd))
+                .align(alignment = Alignment.CenterEnd)
+        )
 
     }
 

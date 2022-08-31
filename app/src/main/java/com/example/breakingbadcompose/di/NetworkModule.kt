@@ -2,6 +2,7 @@ package com.example.breakingbadcompose.di
 
 import com.example.breakingbadcompose.BuildConfig
 import com.example.breakingbadcompose.api.BBCharactersApi
+import com.example.breakingbadcompose.api.BBQuotesApi
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -67,4 +68,10 @@ object NetworkModule {
         return retrofit.build().create(BBCharactersApi::class.java)
     }
 
+    @Singleton
+    @Provides
+    fun providesBBQuotesApi(retrofit: Retrofit.Builder): BBQuotesApi {
+        return retrofit.build().create(BBQuotesApi::class.java)
+    }
 }
+

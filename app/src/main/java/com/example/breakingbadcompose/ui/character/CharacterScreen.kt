@@ -30,15 +30,17 @@ import com.example.breakingbadcompose.ui.theme.*
 @Composable
 fun CharacterScreen(navController: NavHostController, vm: HomeViewModel) {
 
-//    val charactersViewModel:CharactersViewModel = viewModel()
 
-    var test = vm.quotes.value
-    d("---", "quotes loading - $test")
 
     val result =
         vm.character
 //        navController.previousBackStackEntry?.savedStateHandle?.get<BBCharacter>("bb_character")
     val scrollState = rememberScrollState()
+
+
+    val characterQuote = vm.quotes.value.filter { it.author == result?.name }
+//    d("------", "character quote - $characterQuote")
+
     Box(
         modifier = Modifier
             .verticalScroll(scrollState)

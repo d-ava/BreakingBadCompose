@@ -10,6 +10,9 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -40,6 +43,7 @@ fun CharacterScreen(navController: NavHostController, vm: HomeViewModel) {
 
     val characterQuote = vm.quotes.value.filter { it.author == result?.name }
 //    d("------", "character quote - $characterQuote")
+
 
     Box(
         modifier = Modifier
@@ -119,6 +123,30 @@ fun CharacterScreen(navController: NavHostController, vm: HomeViewModel) {
             DisplayCharacterDetails(title = "Birthday", result = result?.birthday)
             DisplayCharacterDetails(title = "Status", result = result?.status)
             DisplayCharacterDetails(title = "Portrayed", result = result?.portrayed)
+
+            Text(
+                text = stringResource(id = R.string.quotes),
+                modifier = Modifier.padding(start = 16.dp, top = 16.dp),
+                color = bb_white,
+                fontFamily = bbFonts,
+
+                )
+            
+            //Quotes
+            var quotes = ""
+            for (quote in characterQuote){
+                quotes = quotes + quote.quote + "\n" +"\n"
+            }
+
+            Text(
+                text = quotes,
+                color = bb_white,
+                lineHeight = 24.sp,
+                modifier = Modifier
+                    .padding(start = 32.dp, top = 16.dp)
+            )
+
+
 
 //            Row(
 //                modifier = Modifier

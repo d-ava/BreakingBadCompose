@@ -20,6 +20,7 @@ import coil.annotation.ExperimentalCoilApi
 import coil.compose.ImagePainter
 import coil.compose.rememberImagePainter
 import com.example.breakingbadcompose.R
+import com.example.breakingbadcompose.ui.theme.bbFonts
 
 
 @OptIn(ExperimentalCoilApi::class)
@@ -70,7 +71,7 @@ fun BreakingBadCharacterCard(title: String, img:String, category:String, onClick
 
                 modifier = Modifier
                     .padding(4.dp)
-                    .fillMaxHeight())
+                    .fillMaxHeight(), fontFamily = bbFonts)
         }
 
     }

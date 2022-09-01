@@ -39,11 +39,10 @@ fun SearchScreen(
 
 ) {
 
-    val loading = vm.charactersLoading.value
 
-    val searchTextState = remember { mutableStateOf(TextFieldValue("1")) }
+    val searchTextState = remember { mutableStateOf(TextFieldValue("")) }
 
-//    val searchTextState = remember { mutableStateOf("") }
+
 
     Box(
         modifier = androidx.compose.ui.Modifier
@@ -106,27 +105,31 @@ fun SearchScreen(
             Box(
                 modifier = androidx.compose.ui.Modifier
                     .fillMaxSize()
-                    .padding(top = 8.dp)
+                    .padding(top = 8.dp, bottom = 64.dp)
             ) {
 
+                if (searchTextState.value.text.isNotBlank()){
 
-                LazyVerticalGrid(cells = GridCells.Fixed(2), content = {
-                    items(vm.characters.value.filter { searchTextState.value.text.lowercase() in it.name.lowercase() || searchTextState.value.text.lowercase() in it.nickname.lowercase() }) { character ->
+                    LazyVerticalGrid(cells = GridCells.Fixed(2), content = {
+                        items(vm.characters.value.filter { searchTextState.value.text.lowercase() in it.name.lowercase() || searchTextState.value.text.lowercase() in it.nickname.lowercase() }) { character ->
 
-                        BreakingBadCharacterCard(
-                            title = character.name,
-                            img = character.img,
-                            category = character.category,
-                            onClick = {
+                            BreakingBadCharacterCard(
+                                title = character.name,
+                                img = character.img,
+                                category = character.category,
+                                onClick = {
 
 
 //                                navController.navigate(Graph.DETAILS)
 //                                vm.addCharacter(character)
-                            })
-                    }
-                })
+                                })
+                        }
+                    })
 
-                BBProgressIndicator(show = loading)
+                }
+
+
+
 
             }
 

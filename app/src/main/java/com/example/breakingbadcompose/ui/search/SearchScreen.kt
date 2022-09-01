@@ -22,6 +22,7 @@ import com.example.breakingbadcompose.ui.login.BBTextField
 import com.example.breakingbadcompose.ui.theme.bb_active_color
 import com.example.breakingbadcompose.ui.theme.bb_background
 import com.example.breakingbadcompose.ui.uiComponents.BBProgressIndicator
+import com.example.breakingbadcompose.ui.uiComponents.BBSearchField
 import com.example.breakingbadcompose.util.Graph
 import java.lang.reflect.Modifier
 import java.nio.file.Files.size
@@ -45,7 +46,7 @@ fun SearchScreen(
 
         Column() {
 
-            BBTextField(text = searchTextState, title = "search")
+            BBSearchField(text = searchTextState)
 
             Box(modifier = androidx.compose.ui.Modifier
                 .fillMaxSize()

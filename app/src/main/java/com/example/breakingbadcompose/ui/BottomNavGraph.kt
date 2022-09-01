@@ -35,7 +35,7 @@ fun BottomNavGraph(navController: NavHostController, vm: HomeViewModel) {
         }
 
         composable(route = BottomBarScreen.Search.route) {
-            SearchScreen()
+            SearchScreen(vm)
         }
         composable(route = BottomBarScreen.Profile.route) {
             ProfileScreen {

@@ -22,6 +22,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.breakingbadcompose.ui.BreakingBadCharacterCard
 import com.example.breakingbadcompose.ui.home.HomeViewModel
 import com.example.breakingbadcompose.ui.login.BBTextField
@@ -35,7 +36,7 @@ import java.nio.file.Files.size
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun SearchScreen(
-    vm: HomeViewModel
+    vm: HomeViewModel ,navController:NavHostController
 
 ) {
 
@@ -108,7 +109,7 @@ fun SearchScreen(
                     .padding(top = 8.dp, bottom = 64.dp)
             ) {
 
-                if (searchTextState.value.text.isNotBlank()){
+                if (searchTextState.value.text.isNotBlank()) {
 
                     LazyVerticalGrid(cells = GridCells.Fixed(2), content = {
                         items(vm.characters.value.filter { searchTextState.value.text.lowercase() in it.name.lowercase() || searchTextState.value.text.lowercase() in it.nickname.lowercase() }) { character ->
@@ -120,15 +121,13 @@ fun SearchScreen(
                                 onClick = {
 
 
-//                                navController.navigate(Graph.DETAILS)
-//                                vm.addCharacter(character)
+                                navController.navigate(Graph.DETAILS)
+                                vm.addCharacter(character)
                                 })
                         }
                     })
 
                 }
-
-
 
 
             }

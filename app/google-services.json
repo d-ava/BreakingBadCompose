@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "980337892528",
+    "project_id": "breakingbadcompose",
+    "storage_bucket": "breakingbadcompose.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:980337892528:android:b3e1e845dc8ce071c82f75",
+        "android_client_info": {
+          "package_name": "com.example.breakingbadcompose"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "980337892528-4sv5ql6brsv44juouohj6te7v98m6o5l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBz2pkLFPikacevDlbVI6ytv866vFmzD9M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "980337892528-4sv5ql6brsv44juouohj6te7v98m6o5l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

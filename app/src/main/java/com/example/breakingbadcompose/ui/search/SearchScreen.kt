@@ -4,8 +4,10 @@ import android.util.Log.d
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.GridCells
-import androidx.compose.foundation.lazy.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
+
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -111,7 +113,7 @@ fun SearchScreen(
 
                 if (searchTextState.value.text.isNotBlank()) {
 
-                    LazyVerticalGrid(cells = GridCells.Fixed(2), content = {
+                    LazyVerticalGrid(columns = GridCells.Fixed(2), content = {
                         items(vm.characters.value.filter { searchTextState.value.text.lowercase() in it.name.lowercase() || searchTextState.value.text.lowercase() in it.nickname.lowercase() }) { character ->
 
                             BreakingBadCharacterCard(

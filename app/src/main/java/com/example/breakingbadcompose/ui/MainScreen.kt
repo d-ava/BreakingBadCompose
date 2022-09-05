@@ -16,10 +16,15 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.breakingbadcompose.ui.home.HomeViewModel
 import com.example.breakingbadcompose.ui.theme.*
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 @Composable
 fun MainScreen(vm: HomeViewModel, navController: NavHostController = rememberNavController()) {
 //    val navController = rememberNavController()
+
+    
     Scaffold(
         bottomBar = {
             BottomBar(navController = navController)

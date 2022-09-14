@@ -23,6 +23,22 @@ class HomeViewModel @Inject constructor(
 
 ) : ViewModel() {
 
+    //----------------------------
+    //add to favourite
+    var favouriteList = mutableListOf<Int>()
+        private set
+
+    fun addToFavouriteList(id:Int){
+        favouriteList.add(id)
+    }
+
+    fun removeFromFavouriteList(id: Int){
+        favouriteList.remove(id)
+    }
+
+
+    //-------------------------------
+
     val charactersLoading = mutableStateOf(false)
 
     val characters: MutableState<List<BBCharacter>> = mutableStateOf(listOf())
@@ -60,8 +76,7 @@ class HomeViewModel @Inject constructor(
     val quotes: MutableState<List<BBQuotes>> = mutableStateOf(listOf())
 
 
-
-    private fun getQuotes(){
+    private fun getQuotes() {
         viewModelScope.launch {
 
 //            quotesLoading.value=true
@@ -69,7 +84,7 @@ class HomeViewModel @Inject constructor(
             val response = quotesApi.getQuotes()
             val body = response.body()
 
-            if (response.isSuccessful && body != null){
+            if (response.isSuccessful && body != null) {
                 quotes.value = body
 //                d("---", "success, quotes is loading")
             }
@@ -78,7 +93,6 @@ class HomeViewModel @Inject constructor(
         }
 
     }
-
 
 
 }

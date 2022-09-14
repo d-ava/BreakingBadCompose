@@ -80,7 +80,17 @@ fun CharacterScreen(navController: NavHostController, vm: HomeViewModel) {
             )
             
             FavouriteIcon(enable = favourite) {
-                favourite = !favourite
+
+                if (!favourite){
+                    favourite=true
+                    vm.addToFavouriteList(result?.charId ?:0)
+                }else{
+                    favourite=false
+                    vm.removeFromFavouriteList(result?.charId ?:0)
+                }
+
+                d("---", "list - ${vm.favouriteList}")
+
                 
             }
             

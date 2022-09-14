@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import com.example.breakingbadcompose.R
 import com.example.breakingbadcompose.ui.theme.*
+import com.google.firebase.auth.FirebaseAuth
 
 @Composable
 fun ProfileScreen(onClick: () -> Unit) {
@@ -60,8 +61,9 @@ fun ProfileScreen(onClick: () -> Unit) {
                 color = bb_white,
                 modifier = Modifier.align(alignment = Alignment.CenterHorizontally)
             )
+            Spacer(modifier = Modifier.padding(64.dp))
 
-            LogoWithText(logo = R.drawable.ic_baseline_language_24, txt = "Language",1, onClick = onClick )
+//            LogoWithText(logo = R.drawable.ic_baseline_language_24, txt = "Language",1, onClick = onClick )
 //           Divider(color = bb_control_color, thickness = 2.dp)
             LogoWithText(logo = R.drawable.ic_baseline_login_24, txt = "Login", onClick=onClick )
 
@@ -88,7 +90,9 @@ fun LogoWithText(logo: Int, txt: String, num:Int=0, onClick: () -> Unit) {
         )
         Text(
             text = txt,
-            modifier = Modifier.padding(start = 80.dp).clickable { onClick() },
+            modifier = Modifier
+                .padding(start = 80.dp)
+                .clickable { onClick() },
             color = bb_white,
 
         )
@@ -97,11 +101,11 @@ fun LogoWithText(logo: Int, txt: String, num:Int=0, onClick: () -> Unit) {
 
 }
 
-
-@Composable
-@Preview
-fun ProfileScreenPreview() {
-    ProfileScreen {
-
-    }
-}
+//
+//@Composable
+//@Preview
+//fun ProfileScreenPreview() {
+//    ProfileScreen {
+//
+//    }
+//}

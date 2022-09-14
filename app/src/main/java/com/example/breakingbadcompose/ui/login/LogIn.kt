@@ -12,18 +12,26 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
 import com.example.breakingbadcompose.R
 import com.example.breakingbadcompose.ui.theme.*
 import com.example.breakingbadcompose.ui.uiComponents.BackArrow
-import java.lang.reflect.Modifier
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.launch
 
 @Composable
 fun LogInScreen(onClick: () -> Unit, navController: NavController) {
 
-    val usernameTextState = remember { mutableStateOf("") }
+    val emailTextState = remember { mutableStateOf("") }
     val passwordTextState = remember { mutableStateOf("") }
+
+    val loginViewModel: LoginViewModel = viewModel()
+    val coroutine = rememberCoroutineScope()
+
+
 
 
 
@@ -52,12 +60,13 @@ fun LogInScreen(onClick: () -> Unit, navController: NavController) {
                 alignment = Alignment.Center,
             )
 
-            BBTextField(text = usernameTextState, title = "USERNAME")
+            BBTextField(text = emailTextState, title = "EMAIL")
 
             BBTextField(text = passwordTextState, title = "PASSWORD")
 
             BBButton(text = "LOGIN") {
-                d("---", "usename - ${usernameTextState.value} and password - ${passwordTextState.value}")
+                d("---", "login button pressed")
+
 
             }
 
@@ -74,14 +83,13 @@ fun LogInScreen(onClick: () -> Unit, navController: NavController) {
                 modifier = androidx.compose.ui.Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center
 
-                )
+            )
 
             Text(
                 text = "REGISTER",
                 modifier = androidx.compose.ui.Modifier
                     .fillMaxWidth()
-                    .clickable { onClick() }
-                ,
+                    .clickable { onClick() },
                 color = bb_white,
                 textAlign = TextAlign.Center,
                 fontFamily = bbFonts, fontWeight = FontWeight.Bold, fontSize = 16.sp
@@ -95,9 +103,3 @@ fun LogInScreen(onClick: () -> Unit, navController: NavController) {
 
 }
 
-
-//@Composable
-//@Preview(showBackground = true)
-//fun SearchScreenPreview(){
-//    LogInScreen()
-//}

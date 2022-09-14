@@ -16,9 +16,10 @@ import com.example.breakingbadcompose.ui.register.RegisterScreen
 import com.example.breakingbadcompose.ui.saved.SavedScreen
 import com.example.breakingbadcompose.ui.search.SearchScreen
 import com.example.breakingbadcompose.util.Graph
+import com.google.firebase.auth.FirebaseAuth
 
 @Composable
-fun BottomNavGraph(navController: NavHostController, vm: HomeViewModel) {
+fun BottomNavGraph(navController: NavHostController, vm: HomeViewModel,) {
     NavHost(
         navController = navController,
         startDestination = BottomBarScreen.Home.route,
@@ -37,11 +38,7 @@ fun BottomNavGraph(navController: NavHostController, vm: HomeViewModel) {
         composable(route = BottomBarScreen.Search.route) {
             SearchScreen(vm, navController = navController)
         }
-        composable(route = BottomBarScreen.Profile.route) {
-            ProfileScreen {
-                navController.navigate(Graph.LOGIN)
-            }
-        }
+
         detailsNavGraph(navController = navController, vm)
         profileNavGraph(navController = navController)
 
@@ -72,7 +69,7 @@ fun NavGraphBuilder.profileNavGraph(navController: NavHostController){
         }
 
         composable(route = Profile.Register.route){
-            RegisterScreen(navController)
+            RegisterScreen(navController,)
         }
     }
 }

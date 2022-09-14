@@ -7,10 +7,16 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.breakingbadcompose.ui.MainScreen
 import com.example.breakingbadcompose.ui.home.HomeViewModel
 import com.example.breakingbadcompose.ui.theme.BreakingBadComposeTheme
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    val auth by lazy{
+        Firebase.auth
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -23,7 +29,7 @@ class MainActivity : ComponentActivity() {
             BreakingBadComposeTheme {
 
 
-                MainScreen(vm)
+                MainScreen(vm, )
 //                SearchScreen()
 //                LogInScreen {}
 //                RegisterScreen()

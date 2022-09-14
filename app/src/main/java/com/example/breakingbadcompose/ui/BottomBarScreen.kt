@@ -26,9 +26,5 @@ sealed class BottomBarScreen(
         icon = R.drawable.ic_saved
     )
 
-    object Profile : BottomBarScreen(
-        route = "profile",
-        title = "Profile",
-        icon = R.drawable.ic_profile
-    )
+
 }

@@ -71,7 +71,7 @@ class HomeViewModel @Inject constructor(
 
             if (response.isSuccessful && body != null){
                 quotes.value = body
-                d("---", "success, quotes is loading")
+//                d("---", "success, quotes is loading")
             }
 
 //            quotesLoading.value = false

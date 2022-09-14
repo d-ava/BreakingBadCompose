@@ -1,16 +1,16 @@
 package com.example.breakingbadcompose.ui.search
 
-import android.util.Log.d
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.TextField
+import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
@@ -21,21 +21,18 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.breakingbadcompose.ui.BreakingBadCharacterCard
 import com.example.breakingbadcompose.ui.home.HomeViewModel
-import com.example.breakingbadcompose.ui.login.BBTextField
-import com.example.breakingbadcompose.ui.theme.*
-import com.example.breakingbadcompose.ui.uiComponents.BBProgressIndicator
-import com.example.breakingbadcompose.ui.uiComponents.BBSearchField
+import com.example.breakingbadcompose.ui.theme.bbFonts
+import com.example.breakingbadcompose.ui.theme.bb_background
+import com.example.breakingbadcompose.ui.theme.bb_control_color
+import com.example.breakingbadcompose.ui.theme.bb_white
 import com.example.breakingbadcompose.util.Graph
-import java.lang.reflect.Modifier
-import java.nio.file.Files.size
 
-@OptIn(ExperimentalFoundationApi::class)
+
 @Composable
 fun SearchScreen(
     vm: HomeViewModel ,navController:NavHostController

@@ -1,5 +1,6 @@
 package com.example.breakingbadcompose.ui
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -20,8 +21,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun MainScreen(vm: HomeViewModel, navController: NavHostController = rememberNavController()) {
+fun MainScreen(vm: HomeViewModel, navController: NavHostController = rememberNavController(), ) {
 //    val navController = rememberNavController()
 
     
@@ -32,7 +34,7 @@ fun MainScreen(vm: HomeViewModel, navController: NavHostController = rememberNav
         backgroundColor = bb_background,
 
     ) {
-        BottomNavGraph(navController = navController, vm)
+        BottomNavGraph(navController = navController, vm, )
     }
 }
 
@@ -42,7 +44,7 @@ fun BottomBar(navController: NavHostController) {
         BottomBarScreen.Home,
         BottomBarScreen.Search,
         BottomBarScreen.Saved,
-        BottomBarScreen.Profile
+
     )
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()

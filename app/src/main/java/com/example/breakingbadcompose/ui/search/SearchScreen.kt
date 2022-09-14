@@ -13,9 +13,7 @@ import androidx.compose.material.TextField
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
@@ -38,6 +36,7 @@ fun SearchScreen(
     vm: HomeViewModel ,navController:NavHostController
 
 ) {
+
 
 
     val searchTextState = remember { mutableStateOf(TextFieldValue("")) }
@@ -122,7 +121,10 @@ fun SearchScreen(
 
                                 navController.navigate(Graph.DETAILS)
                                 vm.addCharacter(character)
-                                })
+                                },
+
+
+                            )
                         }
                     })
 

@@ -26,15 +26,20 @@ import com.example.breakingbadcompose.ui.uiComponents.FavouriteIcon
 
 @OptIn(ExperimentalCoilApi::class)
 @Composable
-fun BreakingBadCharacterCard(title: String, img:String, category:String, onClick:()->Unit) {
+fun BreakingBadCharacterCard(
+    title: String,
+    img: String,
+    category: String,
+    onClick: () -> Unit,
+) {
     val painter =
         rememberImagePainter(data = img,
             builder = {
-                if (category.lowercase().contains("s") && category.lowercase().contains("d") ){
+                if (category.lowercase().contains("s") && category.lowercase().contains("d")) {
                     placeholder(R.drawable.ic_main_logo)
-                }else if (category.lowercase().contains("s")){
+                } else if (category.lowercase().contains("s")) {
                     placeholder(R.drawable.ic_better_cal_saul_logo)
-                }else{
+                } else {
                     placeholder(R.drawable.ic_brba_splash)
                 }
 
@@ -58,10 +63,7 @@ fun BreakingBadCharacterCard(title: String, img:String, category:String, onClick
         }
 
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            
-            FavouriteIcon(enable = true) {
 
-            }
 
             Image(
                 painter = painter, contentDescription = null, modifier = Modifier
@@ -72,11 +74,13 @@ fun BreakingBadCharacterCard(title: String, img:String, category:String, onClick
             )
 
 
-            Text(text = title,color = Color.White,
+            Text(
+                text = title, color = Color.White,
 
                 modifier = Modifier
                     .padding(4.dp)
-                    .fillMaxHeight(), fontFamily = bbFonts)
+                    .fillMaxHeight(), fontFamily = bbFonts
+            )
         }
 
     }

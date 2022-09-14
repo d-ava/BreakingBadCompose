@@ -7,7 +7,7 @@ import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -28,11 +28,18 @@ import com.example.breakingbadcompose.R
 import com.example.breakingbadcompose.model.BBCharacter
 import com.example.breakingbadcompose.ui.home.HomeViewModel
 import com.example.breakingbadcompose.ui.theme.*
+import com.example.breakingbadcompose.ui.uiComponents.FavouriteIcon
 
 @OptIn(ExperimentalCoilApi::class)
 @Composable
 fun CharacterScreen(navController: NavHostController, vm: HomeViewModel) {
 
+
+
+
+    var favourite by remember {
+        mutableStateOf(false)
+    }
 
 
     val result =
@@ -61,7 +68,7 @@ fun CharacterScreen(navController: NavHostController, vm: HomeViewModel) {
         val painterState = painter.state
 
 
-        Column {
+        Column (horizontalAlignment = Alignment.CenterHorizontally){
             Text(
                 stringResource(id = R.string.back),
                 color = bb_white,
@@ -71,12 +78,18 @@ fun CharacterScreen(navController: NavHostController, vm: HomeViewModel) {
                     .padding(start = 16.dp, top = 16.dp)
                     .clickable { navController.popBackStack() }
             )
+            
+            FavouriteIcon(enable = favourite) {
+                favourite = !favourite
+                
+            }
+            
             Image(
                 painter = painter,
                 contentDescription = "test",
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 64.dp, end = 64.dp, bottom = 16.dp, top = 32.dp)
+                    .padding(start = 64.dp, end = 64.dp, bottom = 16.dp, top = 4.dp)
                     .aspectRatio(0.7f)
                     .fillMaxHeight(0.6f)
             )

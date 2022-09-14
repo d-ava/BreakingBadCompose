@@ -8,6 +8,7 @@ import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Done
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -19,7 +20,7 @@ import com.example.breakingbadcompose.ui.theme.bb_white
 @Composable
 fun FavouriteIcon(enable: Boolean, onClick: () -> Unit) {
     Icon(
-        imageVector = if (enable) Icons.Filled.Add else Icons.Filled.Close,
+        imageVector = if (enable) Icons.Filled.Done else Icons.Filled.Close,
         tint = if (enable) bb_active_color else bb_white,
         contentDescription = null,
         modifier = Modifier

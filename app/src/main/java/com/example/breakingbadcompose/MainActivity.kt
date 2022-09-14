@@ -30,9 +30,7 @@ class MainActivity : ComponentActivity() {
 
 
                 MainScreen(vm, )
-//                SearchScreen()
-//                LogInScreen {}
-//                RegisterScreen()
+
             }
         }
     }

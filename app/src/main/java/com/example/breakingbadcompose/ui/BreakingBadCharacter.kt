@@ -21,6 +21,7 @@ import coil.compose.ImagePainter
 import coil.compose.rememberImagePainter
 import com.example.breakingbadcompose.R
 import com.example.breakingbadcompose.ui.theme.bbFonts
+import com.example.breakingbadcompose.ui.uiComponents.FavouriteIcon
 
 
 @OptIn(ExperimentalCoilApi::class)
@@ -57,6 +58,10 @@ fun BreakingBadCharacterCard(title: String, img:String, category:String, onClick
         }
 
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            
+            FavouriteIcon(enable = true) {
+
+            }
 
             Image(
                 painter = painter, contentDescription = null, modifier = Modifier

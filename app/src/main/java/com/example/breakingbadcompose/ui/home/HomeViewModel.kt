@@ -20,7 +20,7 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val api: BBCharactersApi,
     private val quotesApi: BBQuotesApi
-//    private val repository: CharactersRepository
+
 ) : ViewModel() {
 
     val charactersLoading = mutableStateOf(false)

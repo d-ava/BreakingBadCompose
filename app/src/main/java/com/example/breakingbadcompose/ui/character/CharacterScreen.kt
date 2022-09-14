@@ -148,15 +148,7 @@ fun CharacterScreen(navController: NavHostController, vm: HomeViewModel) {
 
 
 
-//            Row(
-//                modifier = Modifier
-//                    .padding(start = 32.dp, end = 16.dp, top = 16.dp)
-//                    .fillMaxWidth(),
-//
-//            ) {
-//                Text(text = "Birthday", color = bb_white)
-//                Text(text = result?.birthday ?: "0", color = bb_white, modifier = Modifier.padding(start = 64.dp))
-//            }
+
 
 
         }
@@ -165,11 +157,6 @@ fun CharacterScreen(navController: NavHostController, vm: HomeViewModel) {
 
 }
 
-//@Composable
-//@Preview(showBackground = true)
-//fun CharacterScreenPreview() {
-//    CharacterScreen(rememberNavController())
-//}
 
 
 @Composable

@@ -69,7 +69,7 @@ fun BreakingBadCharacterCard(
 
             Image(
                 painter = painter, contentDescription = null, modifier = Modifier
-                    .fillMaxWidth()
+                    .fillMaxWidth().alpha(0.8f)
                     .aspectRatio(0.7f)
                     .fillMaxHeight(0.6f),
                 contentScale = ContentScale.Crop

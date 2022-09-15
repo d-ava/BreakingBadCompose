@@ -43,7 +43,7 @@ fun FavouriteIcon(enable: Boolean, onClick: () -> Unit) {
 //            )
 
         Text(
-            text = if (enable) "REMOVE" else "ADD",
+            text = if (enable) "REMOVE" else "SAVE",
             fontFamily = bbFonts,
             fontWeight = FontWeight.Bold,
             fontSize = 24.sp,

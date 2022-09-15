@@ -8,4 +8,7 @@
     <string name="name">Name</string>
     <string name="back">Back</string>
     <string name="quotes">QUOTES</string>
+    <string name="save">SAVE</string>
+    <string name="remove">REMOVE</string>
+
 </resources>

@@ -53,7 +53,7 @@ fun SavedScreen(vm: HomeViewModel, navController: NavHostController) {
 
 
                 LazyVerticalGrid(columns = GridCells.Fixed(2), content = {
-                    items(vm.characters.value.filter { searchTextState.value.text.lowercase() in it.name.lowercase() || searchTextState.value.text.lowercase() in it.nickname.lowercase() }) { character ->
+                    items(vm.characters.value.filter { list.contains(it.charId) }) { character ->
 
                         BreakingBadCharacterCard(
                             title = character.name,

@@ -18,9 +18,11 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.example.breakingbadcompose.R
 import com.example.breakingbadcompose.ui.BreakingBadCharacterCard
 import com.example.breakingbadcompose.ui.theme.bbFonts
 import com.example.breakingbadcompose.ui.theme.bb_background
@@ -59,10 +61,10 @@ fun HomeScreen(
 
             Text(
 
-                fontSize = MaterialTheme.typography.h4.fontSize,
+                fontSize = MaterialTheme.typography.h5.fontSize,
                 fontWeight = FontWeight.Bold,
 
-                text = "Characters",
+                text = stringResource(id = R.string.all_characters),
                 color = bb_white,
                 fontFamily = bbFonts
                 ,
@@ -70,7 +72,9 @@ fun HomeScreen(
 
             )
 
-            Box(modifier = Modifier.fillMaxSize().padding(bottom = 64.dp)) {
+            Box(modifier = Modifier
+                .fillMaxSize()
+                .padding(bottom = 64.dp)) {
 
 
 

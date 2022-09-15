@@ -10,5 +10,7 @@
     <string name="quotes">QUOTES</string>
     <string name="save">SAVE</string>
     <string name="remove">REMOVE</string>
+    <string name="all_characters">All Characters</string>
+    <string name="saved_characters">Saved Characters</string>
 
 </resources>

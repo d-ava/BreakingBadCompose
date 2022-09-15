@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -36,12 +37,6 @@ import com.example.breakingbadcompose.ui.uiComponents.FavouriteIcon
 fun CharacterScreen(navController: NavHostController, vm: HomeViewModel) {
 
 
-
-
-
-
-
-
     val result =
         vm.character
 //        navController.previousBackStackEntry?.savedStateHandle?.get<BBCharacter>("bb_character")
@@ -49,6 +44,8 @@ fun CharacterScreen(navController: NavHostController, vm: HomeViewModel) {
     var favourite by rememberSaveable {
         mutableStateOf(vm.favouriteList.contains(id))
     }
+
+    var textColor = if (favourite) bb_background else bb_white
 
     val scrollState = rememberScrollState()
 
@@ -60,7 +57,7 @@ fun CharacterScreen(navController: NavHostController, vm: HomeViewModel) {
     Box(
         modifier = Modifier
             .verticalScroll(scrollState)
-            .background(bb_background)
+            .background(if (!favourite) bb_background else bb_active_color)
             .fillMaxSize()
     ) {
 
@@ -73,32 +70,33 @@ fun CharacterScreen(navController: NavHostController, vm: HomeViewModel) {
         val painterState = painter.state
 
 
-        Column (horizontalAlignment = Alignment.CenterHorizontally){
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text(
                 stringResource(id = R.string.back),
-                color = bb_white,
+                color = textColor,
                 fontFamily = bbFonts,
+                fontWeight = FontWeight.Bold,
                 modifier = Modifier
                     .align(alignment = Alignment.Start)
                     .padding(start = 16.dp, top = 16.dp)
                     .clickable { navController.popBackStack() }
             )
-            
+
             FavouriteIcon(enable = favourite) {
 
-                if (!favourite){
-                    favourite=true
-                    vm.addToFavouriteList(result?.charId ?:0)
-                }else{
-                    favourite=false
-                    vm.removeFromFavouriteList(result?.charId ?:0)
+                if (!favourite) {
+                    favourite = true
+                    vm.addToFavouriteList(result?.charId ?: 0)
+                } else {
+                    favourite = false
+                    vm.removeFromFavouriteList(result?.charId ?: 0)
                 }
 
                 d("---", "list - ${vm.favouriteList}")
 
-                
+
             }
-            
+
             Image(
                 painter = painter,
                 contentDescription = "test",
@@ -111,7 +109,7 @@ fun CharacterScreen(navController: NavHostController, vm: HomeViewModel) {
             //character name
             Text(
                 text = result?.name ?: "Walter White",
-                color = bb_white,
+                color = textColor,
                 modifier = Modifier.align(alignment = Alignment.CenterHorizontally),
                 fontSize = MaterialTheme.typography.h4.fontSize,
                 fontFamily = bbFonts
@@ -121,7 +119,7 @@ fun CharacterScreen(navController: NavHostController, vm: HomeViewModel) {
             Text(
                 text = result?.nickname ?: "nickname",
                 modifier = Modifier.padding(start = 16.dp, top = 16.dp),
-                color = bb_white,
+                color = textColor,
                 fontFamily = bbFonts,
                 fontSize = 20.sp
             )
@@ -133,7 +131,7 @@ fun CharacterScreen(navController: NavHostController, vm: HomeViewModel) {
             }
             Text(
                 text = occupations,
-                color = bb_white,
+                color = textColor,
                 lineHeight = 24.sp,
                 modifier = Modifier
                     .padding(start = 32.dp, top = 16.dp)
@@ -143,40 +141,40 @@ fun CharacterScreen(navController: NavHostController, vm: HomeViewModel) {
             Text(
                 text = stringResource(id = R.string.details),
                 modifier = Modifier.padding(start = 16.dp, top = 16.dp),
-                color = bb_white,
+                color = textColor,
                 fontFamily = bbFonts,
 
                 )
             //birthday
-            DisplayCharacterDetails(title = "Birthday", result = result?.birthday)
-            DisplayCharacterDetails(title = "Status", result = result?.status)
-            DisplayCharacterDetails(title = "Portrayed", result = result?.portrayed)
+            DisplayCharacterDetails(
+                title = "Birthday",
+                result = result?.birthday,
+                color = textColor
+            )
+            DisplayCharacterDetails(title = "Status", result = result?.status, textColor)
+            DisplayCharacterDetails(title = "Portrayed", result = result?.portrayed, textColor)
 
             Text(
                 text = stringResource(id = R.string.quotes),
                 modifier = Modifier.padding(start = 16.dp, top = 16.dp),
-                color = bb_white,
+                color = textColor,
                 fontFamily = bbFonts,
 
                 )
-            
+
             //Quotes
             var quotes = ""
-            for (quote in characterQuote){
-                quotes = quotes + quote.quote + "\n" +"\n"
+            for (quote in characterQuote) {
+                quotes = quotes + quote.quote + "\n" + "\n"
             }
 
             Text(
                 text = quotes,
-                color = bb_white,
+                color = textColor,
                 lineHeight = 24.sp,
                 modifier = Modifier
                     .padding(start = 32.dp, top = 16.dp)
             )
-
-
-
-
 
 
         }
@@ -186,18 +184,17 @@ fun CharacterScreen(navController: NavHostController, vm: HomeViewModel) {
 }
 
 
-
 @Composable
-fun DisplayCharacterDetails(title: String, result: String?) {
+fun DisplayCharacterDetails(title: String, result: String?, color: Color) {
 
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 8.dp)
     ) {
-        Text(text = title, color = bb_white, modifier = Modifier.padding(start = 32.dp))
+        Text(text = title, color = color, modifier = Modifier.padding(start = 32.dp))
         Text(
-            text = result ?: "", color = bb_white,
+            text = result ?: "", color = color,
             modifier = Modifier
                 .padding(end = 32.dp)
                 .align(alignment = Alignment.CenterEnd)

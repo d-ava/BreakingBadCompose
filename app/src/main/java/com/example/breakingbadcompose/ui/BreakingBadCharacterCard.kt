@@ -56,7 +56,7 @@ fun BreakingBadCharacterCard(
         modifier = Modifier
             .padding(8.dp)
             .fillMaxWidth()
-            .clickable { onClick() },
+            ,
         elevation = 16.dp, backgroundColor = if (favourite) bb_active_color else bb_control_color
     ) {
         if (painterState is ImagePainter.State.Loading) {
@@ -69,9 +69,11 @@ fun BreakingBadCharacterCard(
 
             Image(
                 painter = painter, contentDescription = null, modifier = Modifier
-                    .fillMaxWidth().alpha(0.8f)
+                    .fillMaxWidth()
+                    .alpha(0.8f)
                     .aspectRatio(0.7f)
-                    .fillMaxHeight(0.6f),
+                    .fillMaxHeight(0.6f)
+                    .clickable { onClick() },
                 contentScale = ContentScale.Crop
             )
 
@@ -84,6 +86,7 @@ fun BreakingBadCharacterCard(
                     .padding(4.dp)
                     .fillMaxHeight(), fontFamily = bbFonts
             )
+
         }
 
     }

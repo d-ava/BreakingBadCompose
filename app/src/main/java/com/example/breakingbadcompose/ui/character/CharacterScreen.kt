@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -37,14 +38,18 @@ fun CharacterScreen(navController: NavHostController, vm: HomeViewModel) {
 
 
 
-    var favourite by remember {
-        mutableStateOf(false)
-    }
+
+
 
 
     val result =
         vm.character
 //        navController.previousBackStackEntry?.savedStateHandle?.get<BBCharacter>("bb_character")
+    val id = result?.charId
+    var favourite by rememberSaveable {
+        mutableStateOf(vm.favouriteList.contains(id))
+    }
+
     val scrollState = rememberScrollState()
 
 

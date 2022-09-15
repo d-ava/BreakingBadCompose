@@ -141,9 +141,5 @@ fun SearchScreen(
 
 }
 
-//@Composable
-//@Preview(showBackground = true)
-//fun SearchScreenPreview(){
-//    SearchScreen()
-//}
+
 

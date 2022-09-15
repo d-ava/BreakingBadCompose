@@ -124,7 +124,7 @@ fun SearchScreen(
                                 },
 
 
-                            )
+                                favourite = vm.favouriteList.contains(character.charId))
                         }
                     })
 

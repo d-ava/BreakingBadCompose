@@ -67,7 +67,7 @@ fun SavedScreen(vm: HomeViewModel, navController: NavHostController) {
                             },
 
 
-                            )
+                            favourite = vm.favouriteList.contains(character.charId))
                     }
                 })
 

@@ -15,6 +15,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -41,7 +42,7 @@ fun HomeScreen(
 //    val test = vm.quotes.value
 //    d("---", "quotes - $test")
 
-    var favourite by remember { mutableStateOf(true) }
+
 
 
 
@@ -91,7 +92,7 @@ fun HomeScreen(
                                 vm.addCharacter(character)
                             },
 
-                            )
+                            favourite = vm.favouriteList.contains(character.charId))
                     }
                 })
 

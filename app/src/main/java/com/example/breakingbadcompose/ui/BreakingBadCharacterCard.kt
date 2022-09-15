@@ -14,13 +14,14 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.ImagePainter
 import coil.compose.rememberImagePainter
 import com.example.breakingbadcompose.R
-import com.example.breakingbadcompose.ui.theme.bbFonts
+import com.example.breakingbadcompose.ui.theme.*
 import com.example.breakingbadcompose.ui.uiComponents.FavouriteIcon
 
 
@@ -31,6 +32,7 @@ fun BreakingBadCharacterCard(
     img: String,
     category: String,
     onClick: () -> Unit,
+    favourite: Boolean
 ) {
     val painter =
         rememberImagePainter(data = img,
@@ -50,12 +52,12 @@ fun BreakingBadCharacterCard(
     val painterState = painter.state
 
     Card(
-        shape = RoundedCornerShape(topEnd = 8.dp, topStart = 8.dp),
+        shape = RoundedCornerShape(topEnd = 16.dp, topStart = 16.dp),
         modifier = Modifier
             .padding(8.dp)
             .fillMaxWidth()
             .clickable { onClick() },
-        elevation = 8.dp, backgroundColor = Color.DarkGray
+        elevation = 16.dp, backgroundColor = if (favourite) bb_active_color else bb_control_color
     ) {
         if (painterState is ImagePainter.State.Loading) {
 
@@ -75,7 +77,8 @@ fun BreakingBadCharacterCard(
 
 
             Text(
-                text = title, color = Color.White,
+                text = title, color = if (favourite) bb_background else bb_white,
+                fontWeight = FontWeight.Medium,
 
                 modifier = Modifier
                     .padding(4.dp)

@@ -36,7 +36,7 @@ import com.example.breakingbadcompose.util.Graph
 fun SavedScreen(vm: HomeViewModel, navController: NavHostController) {
 
 
-    val searchTextState = remember { mutableStateOf(TextFieldValue("")) }
+
     val list = vm.favouriteList
 
 
@@ -93,7 +93,8 @@ fun SavedScreen(vm: HomeViewModel, navController: NavHostController) {
                             },
 
 
-                            favourite = vm.favouriteList.contains(character.charId))
+                            favourite = vm.favouriteList.contains(character.charId),
+                            txtOnclick = {})
                     }
                 })
 

@@ -32,7 +32,8 @@ fun BreakingBadCharacterCard(
     img: String,
     category: String,
     onClick: () -> Unit,
-    favourite: Boolean
+    favourite: Boolean,
+    txtOnclick: () -> Unit
 ) {
     val painter =
         rememberImagePainter(data = img,
@@ -55,8 +56,7 @@ fun BreakingBadCharacterCard(
         shape = RoundedCornerShape(topEnd = 16.dp, topStart = 16.dp),
         modifier = Modifier
             .padding(8.dp)
-            .fillMaxWidth()
-            ,
+            .fillMaxWidth(),
         elevation = 16.dp, backgroundColor = if (favourite) bb_active_color else bb_control_color
     ) {
         if (painterState is ImagePainter.State.Loading) {
@@ -84,7 +84,9 @@ fun BreakingBadCharacterCard(
 
                 modifier = Modifier
                     .padding(4.dp)
-                    .fillMaxHeight(), fontFamily = bbFonts
+                    .fillMaxHeight()
+                    .clickable { txtOnclick() },
+                fontFamily = bbFonts,
             )
 
         }

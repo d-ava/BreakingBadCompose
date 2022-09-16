@@ -22,17 +22,38 @@ class HomeViewModel @Inject constructor(
     private val quotesApi: BBQuotesApi
 
 ) : ViewModel() {
+    //--------------------------
+    //test list
+
+    var testList = mutableListOf<Int>(
+        18760001,
+        2319991,
+        99022837,
+        990100,
+        990220110,
+        9940493,
+        738210092,
+        663738292,
+        99999999,
+        8000000
+    )
+        private set
+
+    fun addNumberToTestList(num: Int) {
+        testList.add(num)
+    }
+
 
     //----------------------------
     //add to favourite
     var favouriteList = mutableListOf<Int>()
         private set
 
-    fun addToFavouriteList(id:Int){
+    fun addToFavouriteList(id: Int) {
         favouriteList.add(id)
     }
 
-    fun removeFromFavouriteList(id: Int){
+    fun removeFromFavouriteList(id: Int) {
         favouriteList.remove(id)
     }
 

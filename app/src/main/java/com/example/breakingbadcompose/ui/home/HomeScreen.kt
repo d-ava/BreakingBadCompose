@@ -103,7 +103,7 @@ fun HomeScreen(
                         txtOnclick = {
                             c.launch {
                                 scaffoldState.snackbarHostState.showSnackbar(
-                                    "Char ID ${character.charId}",
+                                    "ID ${character.charId}",
                                     duration = SnackbarDuration.Short
                                 )
                             }

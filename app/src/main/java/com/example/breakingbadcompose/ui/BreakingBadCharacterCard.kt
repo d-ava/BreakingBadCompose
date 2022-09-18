@@ -19,6 +19,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -43,7 +44,7 @@ fun BreakingBadCharacterCard(
 ) {
 
     var showMore by rememberSaveable { mutableStateOf(false) }
-    val extraPadding by animateDpAsState(targetValue = if (showMore) 100.dp else 0.dp)
+    val extraPadding by animateDpAsState(targetValue = if (showMore) 48.dp else 0.dp)
 
 
     val painter =
@@ -64,11 +65,17 @@ fun BreakingBadCharacterCard(
     val painterState = painter.state
 
     Card(
-        shape = RoundedCornerShape(topEnd = 16.dp, topStart = 16.dp, bottomEnd = if (showMore) 16.dp else 0.dp, bottomStart = if (showMore) 16.dp else 0.dp),
+        shape = RoundedCornerShape(
+            topEnd = 16.dp,
+            topStart = 16.dp,
+            bottomEnd = if (showMore) 16.dp else 0.dp,
+            bottomStart = if (showMore) 16.dp else 0.dp
+        ),
         modifier = Modifier
             .padding(8.dp)
             .fillMaxWidth(),
-        elevation = 16.dp, backgroundColor = if (favourite) bb_active_color else if (showMore) bb_grey_light else bb_control_color
+        elevation = 16.dp,
+        backgroundColor = if (favourite) bb_active_color else if (showMore) bb_grey_light else bb_control_color
     ) {
         if (painterState is ImagePainter.State.Loading) {
 
@@ -101,10 +108,12 @@ fun BreakingBadCharacterCard(
                 fontFamily = bbFonts,
             )
 
-            if (showMore){
+
+
+            if (showMore) {
                 Text(
-                    text = "portrayed by $portrayed",
-                    color = if (favourite) bb_background else bb_white,
+                    text = "portrayed by \n $portrayed",
+                    color = bb_background,
                     fontWeight = FontWeight.Normal,
 
                     modifier = Modifier
@@ -114,11 +123,19 @@ fun BreakingBadCharacterCard(
                     fontFamily = bbFonts,
                 )
             }
-            Text(
-                text = if (showMore) "show less" else "show more",
-                modifier = Modifier.padding(top = extraPadding).clickable { showMore = !showMore },
-                color = if (showMore) bb_background else bb_grey_light
+
+            Image(
+                painter = if (showMore) painterResource(id = R.drawable.ic_baseline_keyboard_arrow_up_24) else painterResource(id = R.drawable.ic_baseline_keyboard_arrow_down_24),
+                contentDescription = "arrow",
+                modifier = Modifier.padding(top = extraPadding).clickable { showMore = !showMore  }
             )
+//            Text(
+//                text = if (showMore) "show less" else "show more",
+//                modifier = Modifier
+//                    .padding(top = extraPadding)
+//                    .clickable { showMore = !showMore },
+//                color = if (showMore) bb_background else bb_grey_light
+//            )
 
         }
 

@@ -18,6 +18,7 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -74,7 +75,7 @@ fun HomeScreen(
             scaffoldState = scaffoldState,
             modifier = Modifier
                 .background(bb_background)
-                .padding(bottom = 64.dp)
+                .padding(bottom = 64.dp).alpha(1f)
         ) {
 
 
@@ -85,6 +86,7 @@ fun HomeScreen(
 
                     BreakingBadCharacterCard(
                         title = character.name,
+                        portrayed = character.portrayed,
                         img = character.img,
                         category = character.category,
                         onClick = {

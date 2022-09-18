@@ -126,6 +126,7 @@ fun SearchScreen(
 
                             BreakingBadCharacterCard(
                                 title = character.name,
+                                portrayed = character.portrayed,
                                 img = character.img,
                                 category = character.category,
                                 onClick = {

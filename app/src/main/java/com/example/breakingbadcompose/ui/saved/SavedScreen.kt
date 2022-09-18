@@ -82,7 +82,7 @@ fun SavedScreen(vm: HomeViewModel, navController: NavHostController) {
                     items(vm.characters.value.filter { list.contains(it.charId) }) { character ->
 
                         BreakingBadCharacterCard(
-                            title = character.name,
+                            title = character.name, portrayed = character.portrayed,
                             img = character.img,
                             category = character.category,
                             onClick = {

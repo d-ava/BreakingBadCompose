@@ -31,7 +31,7 @@ import com.example.breakingbadcompose.ui.uiComponents.BBProgressIndicator
 import com.example.breakingbadcompose.util.Graph
 import kotlinx.coroutines.launch
 
-@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter", "CoroutineCreationDuringComposition")
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun HomeScreen(
@@ -42,6 +42,7 @@ fun HomeScreen(
 
 ) {
 
+
 //    val test = vm.quotes.value
 //    d("---", "quotes - $test")
 
@@ -51,7 +52,7 @@ fun HomeScreen(
 
 
     val loading = vm.charactersLoading.value
-    Column(modifier = Modifier.background(bb_control_color)) {
+    Column(modifier = Modifier.background(bb_background)) {
 
         Text(
 
@@ -74,13 +75,19 @@ fun HomeScreen(
         Scaffold(
             scaffoldState = scaffoldState,
             modifier = Modifier
-                .background(bb_background)
-                .padding(bottom = 64.dp).alpha(1f)
-        ) {
 
+                .padding(bottom = 64.dp),
+            backgroundColor = bb_background,
+
+            ) {
+
+            if (vm.charactersMessage.value.isNotEmpty()) {
+
+                c.launch { scaffoldState.snackbarHostState.showSnackbar(vm.charactersMessage.value) }
+            }
 
             LazyVerticalGrid(GridCells.Fixed(2), modifier = Modifier.background(
-                bb_background
+                bb_background,
             ), content = {
                 items(vm.characters.value) { character ->
 
@@ -117,8 +124,6 @@ fun HomeScreen(
 
     }
 
-
-//        }
 
 }
 

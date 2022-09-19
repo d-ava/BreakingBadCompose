@@ -14,6 +14,7 @@ import com.example.breakingbadcompose.model.BBQuotes
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.io.IOException
 import javax.inject.Inject
 
 @HiltViewModel
@@ -25,23 +26,23 @@ class HomeViewModel @Inject constructor(
     //--------------------------
     //test list
 
-    var testList = mutableListOf<Int>(
-        18760001,
-        2319991,
-        99022837,
-        990100,
-        990220110,
-        9940493,
-        738210092,
-        663738292,
-        99999999,
-        8000000
-    )
-        private set
-
-    fun addNumberToTestList(num: Int) {
-        testList.add(num)
-    }
+//    var testList = mutableListOf<Int>(
+//        18760001,
+//        2319991,
+//        99022837,
+//        990100,
+//        990220110,
+//        9940493,
+//        738210092,
+//        663738292,
+//        99999999,
+//        8000000
+//    )
+//        private set
+//
+//    fun addNumberToTestList(num: Int) {
+//        testList.add(num)
+//    }
 
 
     //----------------------------
@@ -61,6 +62,7 @@ class HomeViewModel @Inject constructor(
     //-------------------------------
 
     val charactersLoading = mutableStateOf(false)
+    val charactersMessage = mutableStateOf("")
 
     val characters: MutableState<List<BBCharacter>> = mutableStateOf(listOf())
 
@@ -71,16 +73,25 @@ class HomeViewModel @Inject constructor(
 
     private fun getBBCharacters() {
         viewModelScope.launch {
-            charactersLoading.value = true
+            try {
+                charactersLoading.value = true
+//                delay(2000)
 
-            val response = api.getBBCharacters()
-            val body = response.body()
-            if (response.isSuccessful && body != null) {
-                characters.value = body
+                val response = api.getBBCharacters()
+                val body = response.body()
+                if (response.isSuccessful && body != null) {
+//                    charactersMessage.value = "SUCCESS"
+                    characters.value = body
+                }else{
+                    charactersMessage.value = "unknown error"
+                }
+
+
+                charactersLoading.value = false
+            }catch (e: IOException){
+                charactersMessage.value = e.message ?: "unknown error"
             }
 
-
-            charactersLoading.value = false
         }
     }
 
